@@ -6,7 +6,7 @@ function getValues(){
     let endValue = document.getElementById("endValue").value;
     
     //Validate input
-    //Parse into integer)
+    //Parse into integer
     startValue = parseInt(startValue);
     endValue = parseInt(endValue);
 

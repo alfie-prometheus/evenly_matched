@@ -51,19 +51,91 @@
             <h2 class="border-1 border-bottom border-dark">The Code for Evenly Matched</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
-                    <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function helloWorld() {
-                            alert("hello World");
-                        }
-                    </code>
+                    <pre class="line-numbers">
+                        <code class="language-javascript">
+                            //get the values from the Page
+                            //starts or controller function
+                            function getValues(){
+                                //get values from the page 
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+                                
+                                //Validate input
+                                //Parse into integer
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+
+                                if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                    //call generateNumbers
+                                    let numbers = generateNumbers(startValue, endValue);
+                                    //call displayNumbers
+                                    displayNumbers(numbers);     
+
+                                }else{
+                                    alert("You must enter integers.");
+                                }
+                            }
+
+                            //generate numbers from startvalue to the endvalue
+                            //logic function(s)
+                            function generateNumbers(sValue, eValue){
+
+                                let numbers = [];
+
+                                //get all numbers from the start to the end
+                                for (let i = sValue; i <= eValue; i++) {
+
+                                    //this will execute until the i(index) gets the eValue
+                                    numbers.push(i);
+                                    
+                                }
+
+                                return numbers;
+
+                            }
+
+                            //display the numbers and mark even numbers bold
+                            //display or view functions
+                            function displayNumbers(numbers){
+
+                                let templateRows="";
+
+                                for (let index = 0; index < numbers.length; index++) {
+                                    
+                                    let className = "even";
+
+                                    let number = numbers[index];
+
+                                    if(number % 2 == 0){
+                                        className = "even";
+                                    }
+                                    else{
+                                        className = "odd";
+                                    }
+                                    //This line doesn not render correctly with Prism
+                                    templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+                                }
+
+                                document.getElementById("results").innerHTML = templateRows;
+                            }
+                        </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays the message 'Hello World'</p>
-                </div>
+                    <p>The <b>Evenly Matched</b> app's code is written with HTML5, Bootstrap, CSS, and JavaScript to accomplish its functionality.</p>
+                    
+                    <h5>Overview</h5>
+                    <p><b>Evenly Matched</b> takes numerical inputs from the user and identifies even numbers from the given range. The result is then elegantly displayed with even numbers emphasized in bold.</p>
+                
+                    <h5>getValues() </h5>
+                    <p>This function acts as the controller, extracting the start and end values from the user interface. It ensures the provided inputs are valid integers before invoking subsequent functions to generate and display the sequence of numbers.</p>
+                
+                    <h5>generateNumbers(sValue, eValue) </h5>
+                    <p>Designed to be a utility, this function accepts a starting and ending value, creating an array of numbers within that range. It's a pure logic function, returning the sequence for further processing.</p>
+                
+                    <h5>displayNumbers(numbers) </h5>
+                    <p>With a sharp focus on presentation, this function handles the display logic. For each number in the provided array, it determines its parity and applies the "even" class for even numbers, making them stand out in bold. This visual distinction is achieved through CSS and ensures an intuitive user experience.</p>
+                </div>     
             </div>
         </div>
     </main>
