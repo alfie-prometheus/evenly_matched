@@ -1,4 +1,4 @@
-//get the values from the Page
+//get the values from the page
 //starts or controller function
 function getValues(){
     //get values from the page 
