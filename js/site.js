@@ -54,7 +54,7 @@ function displayNumbers(numbers){
         let number = numbers[index];
 
         if(number % 2 == 0){
-            className = "even";
+            className = "even"; 
         }
         else{
             className = "odd";
